@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="fa" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Windows 11</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="boot-screen">
+        <div class="win-logo">
+            <div></div><div></div>
+            <div></div><div></div>
+        </div>
+        <div class="spinner"></div>
+        <p id="boot-status">در حال راه‌اندازی هسته ویندوز ۱۱...</p>
+    </div>
+
+    <div id="desktop" onclick="closeStartMenu()">
+        <div class="desktop-icons">
+            <div class="icon" onclick="openExplorer('/storage/emulated/0')">
+                <div class="icon-img">💻</div>
+                <span>This PC</span>
+            </div>
+            <div class="icon" onclick="openExplorer('/storage/emulated/0/Download')">
+                <div class="icon-img">📁</div>
+                <span>Downloads</span>
+            </div>
+        </div>
+
+        <div id="explorer-window" class="window hidden">
+            <div class="title-bar" id="explorer-header">
+                <div class="title">📁 File Explorer - <span id="current-path">/storage/emulated/0</span></div>
+                <div class="window-controls">
+                    <button onclick="goBackDir()">⬅️ Back</button>
+                    <button class="close-btn" onclick="closeWindow('explorer-window')">✕</button>
+                </div>
+            </div>
+            <div class="window-body" id="file-list"></div>
+        </div>
+    </div>
+
+    <div id="start-menu" class="glass hidden">
+        <div class="search-box">
+            <input type="text" placeholder="جستجو در برنامه‌ها و فایل‌ها...">
+        </div>
+        <div class="pinned-title">Pinned Apps</div>
+        <div class="pinned-grid">
+            <div class="app-item" onclick="openExplorer('/storage/emulated/0'); closeStartMenu()">
+                <span>📁</span><p>File Explorer</p>
+            </div>
+            <div class="app-item" onclick="openExplorer('/storage/emulated/0/Download'); closeStartMenu()">
+                <span>🪟</span><p>EXE Runner</p>
+            </div>
+            <div class="app-item" onclick="location.reload()">
+                <span>🔄</span><p>Restart OS</p>
+            </div>
+        </div>
+        <div class="start-footer">
+            <span id="engine-badge">⚡ Engine: Checking...</span>
+            <button onclick="location.reload()">⏻ Restart</button>
+        </div>
+    </div>
+
+    <div id="taskbar" class="glass">
+        <div class="taskbar-center">
+            <button class="tb-btn start-btn" onclick="toggleStartMenu(event)">⊞</button>
+            <button class="tb-btn" onclick="openExplorer('/storage/emulated/0')">📁</button>
+            <button class="tb-btn" onclick="openExplorer('/storage/emulated/0/Download')">🎮</button>
+        </div>
+        <div class="taskbar-right">
+            <div id="clock">12:00 PM</div>
+        </div>
+    </div>
+
+    <script src="desktop.js"></script>
+</body>
+</html>
 
